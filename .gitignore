@@ -1,0 +1,21 @@
+## Symfony directories
+vendor/*
+
+## Backups
+*~
+
+## Composer
+composer.phar
+
+## IDE projects
+# phpStorm(IntelliJ IDEA)
+.idea
+# KDevelop
+.kdev4
+# NetBeans
+nbbuild
+nb-build.xml
+nbproject
+# Eclipse
+.classpath
+.project
