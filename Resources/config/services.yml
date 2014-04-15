@@ -1,0 +1,31 @@
+parameters:
+  opensoft.doctrine_additions_bundle.mapping.eventsubscriber.generatorsubscriber.class: Opensoft\DoctrineAdditionsBundle\Mapping\EventSubscriber\GeneratorSubscriber
+  opensoft.doctrine_additions_bundle.mapping.eventsubscriber.orphan_removal_subscriber.class: Opensoft\DoctrineAdditionsBundle\Mapping\EventSubscriber\OrphanRemovalSubscriber
+  opensoft.doctrine_additions_bundle.mapping.eventsubscriber.association_property_override_subscriber.class: Opensoft\DoctrineAdditionsBundle\Mapping\EventSubscriber\AssociationPropertyOverrideSubscriber
+  opensoft.doctrine_additions_bundle.mapping.eventsubscriber.id_generation_strategy_override_subscriber.class: Opensoft\DoctrineAdditionsBundle\Mapping\EventSubscriber\IdGenerationStrategyOverrideSubscriber
+
+services:
+  opensoft.doctrine_additions_bundle.mapping.eventsubscriber.generatorsubscriber:
+    class: %opensoft.doctrine_additions_bundle.mapping.eventsubscriber.generatorsubscriber.class%
+    tags:
+      -  { name: doctrine.event_subscriber, connection: default }
+    arguments:
+      - @annotations.reader
+  opensoft.doctrine_additions_bundle.mapping.eventsubscriber.orphan_removal_subscriber:
+    class: %opensoft.doctrine_additions_bundle.mapping.eventsubscriber.orphan_removal_subscriber.class%
+    tags:
+      -  { name: doctrine.event_subscriber, connection: default }
+    arguments:
+      - @annotations.reader
+  opensoft.doctrine_additions_bundle.mapping.eventsubscriber.association_property_override_subscriber:
+    class: %opensoft.doctrine_additions_bundle.mapping.eventsubscriber.association_property_override_subscriber.class%
+    tags:
+      -  { name: doctrine.event_subscriber, connection: default }
+    arguments:
+      - @annotations.reader
+  opensoft.doctrine_additions_bundle.mapping.eventsubscriber.id_generation_strategy_override_subscriber:
+      class: %opensoft.doctrine_additions_bundle.mapping.eventsubscriber.id_generation_strategy_override_subscriber.class%
+      tags:
+        -  { name: doctrine.event_subscriber, connection: default }
+      arguments:
+        - @annotations.reader

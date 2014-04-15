@@ -1,0 +1,28 @@
+{
+    "name":         "opensoft/doctrine-additions-bundle",
+    "description":  "Doctrine Mapping Additions",
+    "type":         "symfony-bundle",
+    "keywords":     ["symfony", "doctrine", "mapping"],
+    "license":      "MIT",
+    "homepage":     "https://github.org/molchanoviv/DoctrineAdditionsBundle",
+    "authors":      [
+        {
+            "name":     "Ivan Molchanov",
+            "homepage": "https://connect.sensiolabs.com/profile/molchanoviv"
+        },
+        {
+            "name":     "Vladimir Prudilin"
+        }
+    ],
+    "autoload":     {
+        "psr-0": { "Opensoft\\DoctrineAdditionsBundle": "" }
+    },
+    "target-dir": "Opensoft/DoctrineAdditionsBundle",
+    "require":{
+        "php":">=5.3.3",
+        "symfony/framework-bundle": "2.*",
+        "symfony/console": "2.*",
+        "doctrine/orm": ">=2.2.3,<2.4-dev",
+        "symfony/yaml": "2.*"
+    }
+}

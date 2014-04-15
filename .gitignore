@@ -1,5 +1,6 @@
 ## Symfony directories
 vendor/*
+composer.lock
 
 ## Backups
 *~
