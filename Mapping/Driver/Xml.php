@@ -71,7 +71,6 @@ class Xml extends SimplifiedXmlDriver implements DriverInterface
             }
         }
         if (isset($xmlRoot->{'id-generator-stragegy-override'})) {
-            /** @var IdGenerationStrategyOverride $annotation */
             $strategy = (string) $xmlRoot->{'id-generator-stragegy-override'}->attributes()['strategy'];
             if("" !== $strategy) {
                 $classMetadataInfoReflection = new \ReflectionClass('Doctrine\ORM\Mapping\ClassMetadataInfo');

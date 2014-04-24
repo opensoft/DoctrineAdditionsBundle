@@ -43,8 +43,50 @@ class Yaml extends SimplifiedYamlDriver implements DriverInterface
     {
         $reflectionClass = $metadata->getReflectionClass();
         $doctrineAdditionsClassMetadata = new DoctrineAdditionsClassMetadata();
+        if($className === 'Opensoft\Onp\Bundle\TestBundle\Entity\User'){
+            $test = '';
+        }
 
         $yamlRoot = $this->getElement($className);
+
+        if (isset($yamlRoot['associationPropertyOverrides'])) {
+            foreach ($yamlRoot['associationPropertyOverrides'] as $associationName => $overrideArray) {
+                $doctrineAdditionsClassAssociationMetadata = $this->getDoctrineAdditionsClassAssociationMetadataByName(
+                    $associationName,
+                    $doctrineAdditionsClassMetadata
+                );
+                if (isset($overrideArray['orphanRemoval'])) {
+                    $doctrineAdditionsClassAssociationMetadata->setOrphanRemoval($overrideArray['orphanRemoval']);
+                }
+
+                if (isset($overrideArray['mappedBy'])) {
+                    $doctrineAdditionsClassAssociationMetadata->setMappedBy($overrideArray['mappedBy']);
+                }
+                if (isset($overrideArray['inversedBy'])) {
+                    $doctrineAdditionsClassAssociationMetadata->setInversedBy($overrideArray['inversedBy']);
+                }
+                $doctrineAdditionsClassMetadata->addAssociation(
+                    $associationName,
+                    $doctrineAdditionsClassAssociationMetadata
+                );
+            }
+        }
+        if (isset($yamlRoot['idGeneratorStragegyOverride'])) {
+            $strategy = $yamlRoot['idGeneratorStragegyOverride'];
+            if("" !== $strategy) {
+                $classMetadataInfoReflection = new \ReflectionClass('Doctrine\ORM\Mapping\ClassMetadataInfo');
+                if ($classMetadataInfoReflection->hasConstant('GENERATOR_TYPE_' . $strategy)) {
+                    $doctrineAdditionsClassMetadata->setGeneratorType(
+                        constant('Doctrine\ORM\Mapping\ClassMetadataInfo::GENERATOR_TYPE_' . $strategy)
+                    );
+                } else {
+                    if (!is_subclass_of($strategy, 'Doctrine\ORM\Id\AbstractIdGenerator')) {
+                        throw new InvalidArgumentException('Passed generator class must be inherited from a Doctrine\\ORM\\Id\\AbstractIdGenerator');
+                    }
+                    $doctrineAdditionsClassMetadata->setIdGenerator(new $strategy());
+                }
+            }
+        }
 
         $this->convertMetadata($doctrineAdditionsClassMetadata, $metadata);
     }
