@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://opensoftdev.ru/schemas/orm/doctrine-additions-mapping"
+           xmlns:doctrine-additions="http://opensoftdev.ru/schemas/orm/doctrine-additions-mapping"
+           elementFormDefault="qualified">
+
+    <xs:annotation>
+        <xs:documentation><![CDATA[
+       This is the XML Schema for the object/relational
+       mapping file used by the Opensoft/DoctrineAdditionsBundle.
+     ]]></xs:documentation>
+    </xs:annotation>
+
+
+    <xs:element name="id-generator-stragegy-override" type="id-generator-stragegy-override"/>
+
+    <xs:element name="association-property-overrides" type="association-property-overrides"/>
+
+    <xs:complexType name="id-generator-stragegy-override">
+        <xs:attribute name="strategy" type="xs:string" use="required" />
+    </xs:complexType>
+
+    <xs:complexType name="association-property-overrides">
+        <xs:sequence>
+            <xs:element name="association-property-override" type="association-property-override" minOccurs="1" maxOccurs="unbounded" />
+            <xs:any minOccurs="1" maxOccurs="unbounded" namespace="##other"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="association-property-override">
+        <xs:attribute name="name" type="xs:NMTOKEN" use="required" />
+        <xs:attribute name="inversed-by" type="xs:string" />
+        <xs:attribute name="mapped-by" type="xs:string" />
+        <xs:attribute name="orphan-removal" type="xs:boolean" default="false" />
+    </xs:complexType>
+
+</xs:schema>
