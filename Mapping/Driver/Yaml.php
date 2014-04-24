@@ -43,9 +43,6 @@ class Yaml extends SimplifiedYamlDriver implements DriverInterface
     {
         $reflectionClass = $metadata->getReflectionClass();
         $doctrineAdditionsClassMetadata = new DoctrineAdditionsClassMetadata();
-        if($className === 'Opensoft\Onp\Bundle\TestBundle\Entity\User'){
-            $test = '';
-        }
 
         $yamlRoot = $this->getElement($className);
 
@@ -73,7 +70,7 @@ class Yaml extends SimplifiedYamlDriver implements DriverInterface
         }
         if (isset($yamlRoot['idGeneratorStragegyOverride'])) {
             $strategy = $yamlRoot['idGeneratorStragegyOverride'];
-            if("" !== $strategy) {
+            if ("" !== $strategy) {
                 $classMetadataInfoReflection = new \ReflectionClass('Doctrine\ORM\Mapping\ClassMetadataInfo');
                 if ($classMetadataInfoReflection->hasConstant('GENERATOR_TYPE_' . $strategy)) {
                     $doctrineAdditionsClassMetadata->setGeneratorType(
