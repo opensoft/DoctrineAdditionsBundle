@@ -2,7 +2,7 @@ DoctrineAdditionsBundle
 =======================
 
 This bundle allows you to override association properties for inherited entities such as mappedBy, inversedBy or orphanRemoval.
-Also it allows yoг to override identifier generation strategy
+It also allows you to override the identifier generation strategy.
 
 ## Installation
 
