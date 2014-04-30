@@ -3,13 +3,13 @@
 
 ## Contents
 
-* [Change Type Of Your Entities Relationship](#change-type-of-your-entities-relationship)
+* [Change The Type Of Your Entities Relationship](#change-type-of-your-entities-relationship)
 * [Add/Remove Orphan Removal Strategy](#addremove-orphan-removal-strategy)
 * [Override Id Generation Strategy](#override-id-generation-strategy)
 
 ## <a id="relationship-type"></a>Change Type Of Your Entities Relationship
 
-If you have two mapped superclasses with unidirectional relationship and you want to make entities with bidirectional relationship based on specified mapped superclasses you need to use `association-overrides` tag.
+If you have two mapped superclasses with a unidirectional relationship and you want to create entities with a bidirectional relationship based on those superclasses, you need to use the `association-property-overrides` tag.
 
 
 ```php
@@ -91,7 +91,7 @@ If you have two mapped superclasses with unidirectional relationship and you wan
     </doctrine-mapping>
 ```
 
-Lets call their children User and UserProfile.
+Let's call their children User and UserProfile.
 
 ```php
     namespace Acme\Bundle\DemoBundle\Entity;
@@ -162,13 +162,13 @@ Lets call their children User and UserProfile.
     </doctrine-mapping>
 ```
 
-    Please do not forget to add xml namespcae toy your mapping file. xmlns:doctrine-additions="http://opensoftdev.ru/schemas/orm/doctrine-additions-mapping"
+    Please do not forget to add the xml namespace to your mapping file. xmlns:doctrine-additions="http://opensoftdev.ru/schemas/orm/doctrine-additions-mapping"
 
-After adding `association-property-override` tag to your children entities relationship between them became bidirectional.
+After adding the `association-property-override` tag to your children entities, the relationship between them becomes bidirectional.
 
 ## <a id="orphan-removal-override"></a>Add/Remove Orphan Removal Strategy.
 
-If you want to add or remove orphanRemoval strategy to your relations you need to use `orphan-removal` property of `association-property-override` tag
+If you want to add or remove the orphanRemoval strategy to your relations, you need to use the `orphan-removal` property of the `association-property-override` tag.
 
 ```php
     namespace Acme\Bundle\DemoBundle\Entity;
@@ -202,11 +202,11 @@ If you want to add or remove orphanRemoval strategy to your relations you need t
     </doctrine-mapping>
 ```
 
-And that's it. Now orphan UserProfile will be authomatically removed after removing link to it from User entity and flush.
+And that's it. Now orphaned `UserProfile` entities will be automatically removed after removing the link to them from the `User` entity.
 
 ## <a id="id-generation-override"></a>Override Id Generation Strategy
 
-If you want to override generation strategy in your child entity to another one you need to use `id-generator-stragegy-override` tag.
+If you want to override the generation strategy in your child entity, you need to use the `id-generator-strategy-override` tag.
 
 ```php
     namespace Acme\Bundle\DemoBundle\Entity;
@@ -238,8 +238,8 @@ If you want to override generation strategy in your child entity to another one 
     </doctrine-mapping>
 ```
 
-As a value for strategy property you can use the name of one of [doctrine stragegies](http://doctrine-orm.readthedocs.org/en/latest/reference/basic-mapping.html#identifier-generation-strategies) or a path to your custom strategy.
-Please remember that your custom strategy class should be inherited from `Doctrine\ORM\Id\AbstractIdGenerator`
+As a value for the `strategy` property, you can use the name from one of the [doctrine strategies](http://doctrine-orm.readthedocs.org/en/latest/reference/basic-mapping.html#identifier-generation-strategies) or a path to your custom strategy.
+Please remember that your custom strategy class should be inherited from `Doctrine\ORM\Id\AbstractIdGenerator`.
 
 ---
 [Index](../../README.md)

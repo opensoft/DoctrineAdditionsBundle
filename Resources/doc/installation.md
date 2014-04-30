@@ -15,7 +15,7 @@ Installation
     }
 ```
 
-* That's it! Congradilations Opensoft/DoctrineAdditionsBundle is installed successfully!
+* That's it! Congratulations, Opensoft/DoctrineAdditionsBundle has been successfully installed!
 
 ---
 [Index](../../README.md)

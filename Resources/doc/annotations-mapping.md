@@ -9,9 +9,10 @@
 
 ## <a id="relationship-type"></a>Change Type Of Your Entities Relationship
 
-For association property overriding you can use `AssociationPropertyOverride` annotation.
-For example you have two mapped superclasses with unidirectional relationship and you want to make entities with bidirectional relationship based on specified mapped superclasses.
-Lets call them BaseUser and BaseUserProfile.
+To override association properties, you can use the `AssociationPropertyOverride` annotation.
+For example, assume you have two mapped superclasses with a unidirectional relationship, and you want to create entities with a bidirectional relationship based on those superclasses.
+
+Let's call them BaseUser and BaseUserProfile.
 
 ```php
     namespace Acme\Bundle\DemoBundle\Entity;
@@ -71,13 +72,13 @@ Lets call them BaseUser and BaseUserProfile.
     }
 ```
 
-And call their children User and UserProfile. Also lets add AssociationPropertyOverride annotation as shown below.
+Call their children User and UserProfile. Also, let's add the `AssociationPropertyOverride` annotation as shown below.
 
 ```php
     namespace Acme\Bundle\DemoBundle\Entity;
 
     use Doctrine\ORM\Mapping as ORM;
-    use pensoft\DoctrineAdditionsBundle\Mapping\Annotation as DA;
+    use Opensoft\DoctrineAdditionsBundle\Mapping\Annotation as DA;
 
     /**
      * Acme\Bundle\DemoBundle\Entity\User
@@ -96,7 +97,7 @@ And call their children User and UserProfile. Also lets add AssociationPropertyO
     namespace Acme\Bundle\DemoBundle\Entity;
 
     use Doctrine\ORM\Mapping as ORM;
-    use pensoft\DoctrineAdditionsBundle\Mapping\Annotation as DA;
+    use Opensoft\DoctrineAdditionsBundle\Mapping\Annotation as DA;
 
     /**
      * Acme\Bundle\DemoBundle\Entity\UserProfile
@@ -115,19 +116,19 @@ And call their children User and UserProfile. Also lets add AssociationPropertyO
           //...
     }
 ```
-After adding annotations to your children entities relationship between them became bidirectional.
+After adding the annotations to your children entities, the relationship between them becomes bidirectional.
 
 ## <a id="orphan-removal-override"></a>Add/Remove Orphan Removal Strategy.
 
-If you want to add or remove orphanRemoval strategy to your relations you can do it in two ways.
+You can add or remove the orphanRemoval strategy from your relations in one of two ways.
 
-The first one is use orphanRemoval property from `AssociationPropertyOverride` class annotation.
+The first way is to use the orphanRemoval property of the `AssociationPropertyOverride` class annotation.
 
 ```php
     namespace Acme\Bundle\DemoBundle\Entity;
 
     use Doctrine\ORM\Mapping as ORM;
-    use pensoft\DoctrineAdditionsBundle\Mapping\Annotation as DA;
+    use Opensoft\DoctrineAdditionsBundle\Mapping\Annotation as DA;
 
     /**
      * Acme\Bundle\DemoBundle\Entity\User
@@ -142,13 +143,13 @@ The first one is use orphanRemoval property from `AssociationPropertyOverride` c
     }
 ```
 
-And the second one is use `OrphanRemoval` field annotation.
+The second way is to use the `OrphanRemoval` field annotation.
 
 ```php
     namespace Acme\Bundle\DemoBundle\Entity;
 
     use Doctrine\ORM\Mapping as ORM;
-    use pensoft\DoctrineAdditionsBundle\Mapping\Annotation as DA;
+    use Opensoft\DoctrineAdditionsBundle\Mapping\Annotation as DA;
 
     /**
      * Acme\Bundle\DemoBundle\Entity\User
@@ -169,17 +170,17 @@ And the second one is use `OrphanRemoval` field annotation.
     }
 ```
 
-And that's it. Now orphan UserProfile will be authomatically removed after removing link to it from User entity and flush.
+And that's it. Now orphaned UserProfile entities will be automatically removed after removing the link to them from the User entity.
 
 ## <a id="id-generation-override"></a>Override Id Generation Strategy
 
-If you want to override generation strategy in your child entity to another one you need to use `IdGenerationStrategyOverride` annotation.
+If you want to override the generation strategy in your child entity, you need to use the `IdGenerationStrategyOverride` annotation.
 
 ```php
     namespace Acme\Bundle\DemoBundle\Entity;
 
     use Doctrine\ORM\Mapping as ORM;
-    use pensoft\DoctrineAdditionsBundle\Mapping\Annotation as DA;
+    use Opensoft\DoctrineAdditionsBundle\Mapping\Annotation as DA;
 
     /**
      * Acme\Bundle\DemoBundle\Entity\User
@@ -194,8 +195,8 @@ If you want to override generation strategy in your child entity to another one 
     }
 ```
 
-As a value for strategy property you can use the name of one of [doctrine stragegies](http://doctrine-orm.readthedocs.org/en/latest/reference/basic-mapping.html#identifier-generation-strategies) or a path to your custom strategy.
-Please remember that your custom strategy class should be inherited from `Doctrine\ORM\Id\AbstractIdGenerator`
+As a value for the `strategy` property, you can use the name from one of the [doctrine strategies](http://doctrine-orm.readthedocs.org/en/latest/reference/basic-mapping.html#identifier-generation-strategies) or a path to your custom strategy.
+Please remember that your custom strategy class should be inherited from `Doctrine\ORM\Id\AbstractIdGenerator`.
 
 ---
 [Index](../../README.md)
